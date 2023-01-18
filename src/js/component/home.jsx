@@ -1,25 +1,40 @@
-import React from "react";
+import React,{useState} from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+
+	const [input,setImput] = ("")
+	const [array,setArray] = ([])
+
+	const addTask = (e) =>{
+		setArray(array.concat(input))
+	}
+
+	const deleteTask = (index) =>{
+		let borrar = array[index]
+		setArray(array.filter((item) => item != borrar))
+		console.log(index);
+	}
+	console.log(array);
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container">
+			<h1>Mis tareas</h1>
+			<ul>
+				<li>
+					<input type="text" 
+					onChange={(e)=>setImput(e.target.value)} 
+					value= {input} 
+					placeholder="Introducir tarea"></input>
+					<button onClick={addTask}>+</button>
+				</li>
+				{array.map((item,index) =>{
+					<li key={index}>
+						{item} <button onClick={()=> deleteTask(index)}>X</button>
+				</li>
+				})}
+			</ul>
 		</div>
+	
 	);
 };
 
