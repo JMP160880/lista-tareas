@@ -12,8 +12,9 @@ ul li{
 }
 h1{
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     text-decoration: underline;
+    
 }
 input{
     border: none;

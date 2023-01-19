@@ -22,7 +22,7 @@ const Home = () => {
 			<ul>
 				<li>
 					<input onChange={(e)=>setInput(e.target.value)} value={input}
-					 placeholder="AÑADIR TAREA A REALIZAR" 
+					 placeholder=" - AÑADIR TAREA" 
 					 onKeyDown={addTask}></input>
 				</li>
 				{array.map((item,index) => (
