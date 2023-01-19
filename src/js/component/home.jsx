@@ -1,18 +1,17 @@
 import React, {useState} from "react";
-//create your first component
+
 const Home = () => {
 	const [input, setInput] = useState("");
 	const [array, setArray] = useState([]);
 
-	function addTask (e){
+	const addTask = (e) =>{
 		if(e.keyCode === 13){
 			setArray(array.concat(input));
 			setInput("")
 		}
-		
-		
 	}
-	function deleteTask(index){
+
+	const deleteTask =(index) =>{
 		let borrar = array[index]
 		setArray(array.filter((item) => item!=borrar))
 	}
@@ -28,10 +27,12 @@ const Home = () => {
 				</li>
 				{array.map((item,index) => (
 					<li  key={index}>
-						{item} <button onClick={()=>deleteTask(index)}>x</button>
+						{item} <button onClick={()=>deleteTask(index)}>
+						<i class="fa fa-trash"></i></button>
 					</li>
 				))}
 			</ul>
+			<div id="total"> {array.length}  TAREAS POR REALIZAR </div>
 		</div>
 	);
 };
