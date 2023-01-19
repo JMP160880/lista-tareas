@@ -9,6 +9,8 @@ ul li{
     border: 2px solid black;
     list-style: none;
     padding: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 h1{
     text-align: center;

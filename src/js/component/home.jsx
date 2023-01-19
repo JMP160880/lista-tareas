@@ -1,40 +1,38 @@
-import React,{useState} from "react";
-
+import React, {useState} from "react";
+//create your first component
 const Home = () => {
+	const [input, setInput] = useState("");
+	const [array, setArray] = useState([]);
 
-	const [input,setImput] = ("")
-	const [array,setArray] = ([])
-
-	const addTask = (e) =>{
-		setArray(array.concat(input))
+	function addTask (e){
+		if(e.keyCode === 13){
+			setArray(array.concat(input));
+			setInput("")
+		}
+		
+		
 	}
-
-	const deleteTask = (index) =>{
+	function deleteTask(index){
 		let borrar = array[index]
-		setArray(array.filter((item) => item != borrar))
-		console.log(index);
+		setArray(array.filter((item) => item!=borrar))
 	}
-	console.log(array);
-
+	
 	return (
 		<div className="container">
-			<h1>Mis tareas</h1>
+			<h1>LISTA DE TAREAS PENDIENTES</h1>
 			<ul>
 				<li>
-					<input type="text" 
-					onChange={(e)=>setImput(e.target.value)} 
-					value= {input} 
-					placeholder="Introducir tarea"></input>
-					<button onClick={addTask}>+</button>
+					<input onChange={(e)=>setInput(e.target.value)} value={input}
+					 placeholder="AÑADIR TAREA A REALIZAR" 
+					 onKeyDown={addTask}></input>
 				</li>
-				{array.map((item,index) =>{
-					<li key={index}>
-						{item} <button onClick={()=> deleteTask(index)}>X</button>
-				</li>
-				})}
+				{array.map((item,index) => (
+					<li  key={index}>
+						{item} <button onClick={()=>deleteTask(index)}>x</button>
+					</li>
+				))}
 			</ul>
 		</div>
-	
 	);
 };
 
